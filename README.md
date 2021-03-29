@@ -4,7 +4,7 @@ This script makes the very basic iSH enviornment into something more useful (com
 ## Installation 
 Just run the following commands:
 ```
-git pull https://github.com/SupahXYT/ish-bstrp
+git clone https://github.com/SupahXYT/ish-bstrp
 cd ish-bstrp
 chmod +x main.sh
 ./main.sh
