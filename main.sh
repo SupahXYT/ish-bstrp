@@ -5,9 +5,9 @@ apk add doas openssh openrc bash vim
 
 # cp config files
 echo "copying config files"
-cp inittab /etc/inittab
-cp .bashrc $HOME
-cp repository /etc/apk/repositories
+cat inittab > /etc/inittab
+cat .bashrc > $HOME/.bashrc
+cat repository > /etc/apk/repositories
 
 # openrc
 rc-update add sshd default
