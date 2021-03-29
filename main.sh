@@ -5,9 +5,9 @@ apk add doas openssh openrc bash vim
 
 # cp config files
 echo "copying config files"
-cat inittab > /etc/inittab
-cat .bashrc > $HOME/.bashrc
-cat repository > /etc/apk/repositories
+cp inittab /etc/inittab
+cp .bashrc $HOME/.bashrc
+cp repositories /etc/apk/repositories
 
 # openrc
 rc-update add sshd default
@@ -16,7 +16,7 @@ rc-update add sshd default
 apk add neofetch links tmux
 
 # Create new user
-echo "Enter username of new user (make sure there are no invalid characters)"
+printf "Enter username of new user (make sure there are no invalid characters)\n> "
 read username
 mkdir /home/$username
 working_dir=$(pwd)
@@ -31,6 +31,7 @@ passwd $username
 
 printf "permit no pass keepenv %s as root\npermit no pass keepenv root as root\n" "$username" > /etc/doas.conf
 
-echo "Installation complete. Make sure to change default shell in /etc/passwd"
+echo "Installation complete. Make sure to change default shell in /etc/passwd (press enter to reboot)"
+read enter
 reboot
 
