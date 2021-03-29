@@ -18,18 +18,12 @@ apk add neofetch links tmux
 # Create new user
 printf "Enter username of new user (make sure there are no invalid characters)\n> "
 read username
-mkdir /home/$username
-working_dir=$(pwd)
-cd /home/$username
-adduser -h $username
+adduser -h /home/$username
 
 # Set password
-echo "Set password for root"
 passwd
-echo "Set password for $username"
-passwd $username
 
-printf "permit no pass keepenv %s as root\npermit no pass keepenv root as root\n" "$username" > /etc/doas.conf
+printf "permit no pass keepenv %s as root\n" "$username" >> /etc/doas.conf
 
 echo "Installation complete. Make sure to change default shell in /etc/passwd (press enter to reboot)"
 read enter
